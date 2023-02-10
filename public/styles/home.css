@@ -1,0 +1,249 @@
+
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
+/* Home styling */
+.container{
+    display: flex;
+    flex-direction: row;
+    background-color: whitesmoke;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    padding-top: 70px;
+}
+
+.main{
+    width: 85%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px 0;
+    height: 100%;
+}
+
+.main::-webkit-scrollbar{
+    display: none;
+}
+
+aside{
+    display: block;
+    position: fixed;
+    right: 0;
+    width: 15%;
+    height: 100%;
+    /* text-align: center; */
+    font-size: 16px;
+    padding-top: 15px;
+    overflow: scroll;
+}
+
+aside hr{
+    margin: 5px 10px 0 0;
+}
+
+aside .contactList{
+    list-style: none;
+    margin-top: 10px;
+}
+
+.contactList .contact{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.contactList .contact img{
+    margin-left: 10px;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+}
+
+.contactList a{
+    padding: 15px 0 15px 10px;
+    text-decoration: none;
+    color: black;
+}
+
+
+
+.contactList .contact:hover{
+    background-color: white;
+}
+
+.uploadContainer{
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 650px;
+    padding: 10px 20px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(141, 141, 141, 0.77);
+}
+
+.uploadContainer .box{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0;
+    justify-content: space-between;
+}
+
+.uploadContainer .appends button {
+    height: 40px;
+    width: 40px;
+    border: none;
+    border-radius: 100%;
+    background-color: whitesmoke;
+    cursor: pointer;
+    text-align: center;
+    align-items: center;
+    
+}
+
+.uploadContainer .appends .img-ulp{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    border-radius: 100%;
+}   
+
+.uploadContainer .appends label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    background-color: whitesmoke;
+    cursor: pointer;
+}
+
+.uploadContainer .appends *:hover{
+    background-color: white;
+}
+
+.img-ulp>input{
+    display: none;
+}
+
+.writtingSpace{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.writtingSpace input{
+    margin: 0 10px;
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 30px;
+    padding: 30px 10px;
+    outline: none;   
+}
+
+.writtingSpace img{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+
+.image-preview{
+    position: relative;
+}
+
+.image-preview a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    right: 13px;
+    top: 20px;
+    background-color: gray;
+    color: white;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.image-preview a:hover{
+    background-color: #a0a0a0;
+}
+
+#file-image{
+    display: inline;
+    width: 100%;
+    max-width: 650px;
+    padding: 10px 5px;
+    border-radius: 15px;
+}
+
+.hidden{
+    display: none !important;
+}
+
+.uploadBtn button{
+    width: 60px;
+    color: whitesmoke;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: rgb(34, 156, 34);
+    border: none;
+    border-radius: 10px;
+}
+
+
+
+.postsContainer{
+    font-size: 17px;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    width: 700px;
+}
+
+.postsContainer .noResults{
+    font-size: 26px;
+    text-align: center;
+    color: gray;
+}
+
+
+
+@media only screen and (max-width: 900px) {
+    
+    .main{
+        width: 100%;
+    }
+    
+    aside{
+        display: none;
+    }
+
+    .uploadContainer{
+        max-width: 550px;
+    }
+
+    .postsContainer{
+        width: 600px;
+    }
+
+}
+
+@media only screen and (max-width: 625px) {
+
+    .uploadContainer{
+        max-width: 300px;
+    }
+
+    .postsContainer{
+        width: 350px;
+    }
+
+}

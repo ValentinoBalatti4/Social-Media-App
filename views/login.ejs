@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/login.css">
+    <title>My Blog</title>
+</head>
+<body>
+    <div class="container">
+        <input type="checkbox" id="flip" name="flip">
+        <div class="page">
+
+            <div class="front">
+                <img src="/images/written-page.webp" alt="">
+            </div>
+            <div class="back">
+                <img src="/images/written-page.webp" alt="">
+            </div>
+            
+        </div>
+        <div class="forms">
+            <div class="form-content">
+                <div class="login-form">
+                    <form class="sing-in" action="/auth/login" method="post">
+                        <h2>Sign In </h2>
+                        <div class="input-boxes">
+                            <div class="input-box">
+                                <i class="fas fa-envelope"></i>
+                                <input placeholder="Username" name="username" type="text" required>
+                            </div>
+                            <div class="input-box">
+                                <i class="fas fa-lock"></i>
+                                <input placeholder="Password" name="password" type="password" required>
+                            </div>
+                        </div>
+
+                        <input class="submit" value="Submit" type="submit"/>
+                        <div class="text">Dont have an account? <label for="flip">Sign up now</label></div>
+                    </form>
+                </div>
+                <div class="signup-form">
+                    <form class="sign-up" action="/auth/sign-up" method="post">
+                        <h2>Sign Up</h2>
+                        <div class="input-boxes">
+                            <div class="input-box">
+                                <i class="fas fa-user"></i>
+                                <input placeholder="Username" name="username" type="text" required>
+                            </div>
+                            <div class="input-box">
+                                <i class="fas fa-envelope"></i>
+                                <input placeholder="Email" name="email" type="email" required>
+                            </div>
+                            <div class="input-box">
+                                <i class="fas fa-lock"></i>
+                                <input placeholder="Password" name="password" type="password" required>
+                            </div>
+                        </div>
+                        <% if(typeof failureMessage !== "undefined") {%>
+                            <span><%= failureMessage %></span>
+                        <% } %>
+                        <input class="submit" value="Submit" type="submit"/>
+                        <div class="text">Already have an account? <label for="flip">Login now</label></div>
+                    </form>
+                </div>
+            </div>
+        </div>  
+    </div>
+</body>
+</html>

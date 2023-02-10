@@ -1,0 +1,84 @@
+<!-- Posts -->
+<head>
+    <link type="text/css" rel="stylesheet" href="/styles/posts.css">
+</head>
+
+<div class="post-container">
+    <div class="post-header">
+        <div class="user-info">
+            <% if(post.userPicPath !== ""){ %>
+                <img src="<%= post.userPicPath %>">
+            <% } else{ %>
+                <img src="/images/def-profile.webp">
+            <% } %>
+
+            <a href="/search?search=<%=post.username%>"><%= post.username %></a>
+        </div>
+
+        <% if(post.username === currentUser.username){ %>
+            <div class="post-options">
+                <form action="/delete/<%= post._id %>" method="post">
+                    <button class="material-symbols-outlined">delete</button>
+                </form>
+            </div>
+        <% } %>
+    </div>
+
+    <div class="text-section">
+        <p><%= post.text %></p>
+    </div>
+    <% if(post.imgPath !== ""){ %>
+        <img src="<%= post.imgPath %>" alt="post">
+    <% } %>
+
+
+    <div class="interactions" >
+        <form class="likes" action="/like/<%- post._id %>" method="post">
+
+            <% if(post.likes.includes(currentUser.username)){ %>
+                <button><span id="liked" class="material-symbols-outlined">favorite</span></button>
+            <% } else { %>
+                <button><span id="like" class="material-symbols-outlined">favorite</span></button>
+            <% } %>
+            
+            <a><%=post.likes.length %></a>
+        </form>
+        
+        <div class="comments">
+            <button id="commentBtn"><span class="material-symbols-outlined">comment</span></button>
+            <a><%=post.comments.length %></a>
+        </div>
+        
+    </div>
+    <form action="/comment/<%- post._id %>" method="post">
+        <input id="commentInput" name="comment" type="text" placeholder="Write a comment...">
+    </form>      
+    <div class="comment-section">
+        <div class="comments">       
+            <% post.comments.forEach((comment) => { %>
+                <div class="comment">
+                    <div style="display: flex; gap: 5px;">
+                        <% if(comment.profilePic !== ""){ %>
+                            <img src="<%= comment.profilePic %>">
+                        <% } else{ %>
+                            <img src="/images/def-profile.webp">
+                        <% } %>   
+
+                        <div class="commentContent">
+                            <a href="/search?search=<%=comment.username%>"><%= comment.username %></a>
+                            <p><%= comment.comment %></p>
+                        </div>
+                    </div>
+                    <% if(comment.username === currentUser.username){ %>
+                        <div class="comment-options">
+                            <form action="/removeComment/<%= post._id %>/<%= comment.id %>" method="post">
+                                <button id="delete" class="material-symbols-outlined">delete</button>
+                            </form>
+                        </div>
+                    <% } %>
+
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</div>

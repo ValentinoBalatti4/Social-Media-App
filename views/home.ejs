@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/styles/home.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>MyAPP</title>
+</head>
+<body>
+    <%- include('partials/navbar.ejs')%>
+    <div class="container">
+        <div class="main">
+            <form class="uploadContainer" action="/submit" method="post" enctype="multipart/form-data">
+                <div class="writtingSpace">
+                    <% if(currentUser.profilePic !== ""){ %>
+                        <img src="<%= currentUser.profilePic %>">
+                    <% } else{ %>
+                        <img src="/images/def-profile.webp">
+                    <% } %>
+                    <input name="text" placeholder="Whats on your mind?">
+                </div>
+                <div class="image-preview">
+                    <a class="hidden" id="close" onclick="cancelImgUpl()"><span class="material-symbols-outlined">close</span></a>
+                    <img class="hidden" id="file-image" src="" alt="Preview" >
+                </div>
+                <div class="box">
+                    <div class="appends">
+                        <div class="img-ulp">
+                            <label for="file-input"><span class="material-symbols-outlined">image</span></label>
+                            <input name="image" id="file-input" type="file" accept="image/*" onchange="imgPreview(event)"/>
+                        </div>
+                    </div>
+                    <div class="uploadBtn">
+                        <button><span>Share</span></button>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="postsContainer">
+                <% if(allPosts.length !== 0){ %>
+                    <% allPosts.forEach((post) =>{  %>
+                        <%- include('partials/posts.ejs', {post: post}) %>
+                    <% }) %>
+                <% } else{ %>
+                    <a class="noResults">There are no posts to view</a>
+                <% } %>
+                
+            </div>
+        </div>
+        <aside>
+            <a>My followings</a>
+            <hr>
+            <ul class="contactList">
+                <% currentUser.following.forEach((user)=>{ %>
+                    <div class="contact">
+                        <% if(user.profilePic !== ""){ %>
+                            <img src="<%= user.profilePic %>">
+                        <% } else{ %>
+                            <img src="/images/def-profile.webp">
+                        <% } %>
+                        <a href="/search?search=<%=user.username%>"><%- user.username %></a>
+                    </div>
+                <% }) %>
+            </ul>
+        </aside>
+    </div>
+
+</body>
+</html>
+<script>
+    var preview = document.querySelector("#file-image")
+    var close = document.querySelector("#close")
+
+    function imgPreview(event){
+        if(event.target.files.length > 0){
+            var src = URL.createObjectURL(event.target.files[0])
+
+            preview.src = src
+            preview.classList.remove('hidden')
+            close.classList.remove('hidden')
+        }
+    }
+
+    function cancelImgUpl(){
+        preview.src = ""
+        preview.classList.add('hidden')
+        close.classList.add('hidden')
+    }
+</script>

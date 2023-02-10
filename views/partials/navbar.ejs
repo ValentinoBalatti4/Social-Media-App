@@ -1,0 +1,113 @@
+<!-- navbar -->
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/styles/navbar.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<nav>
+    <div class="nav-container">
+       <a class="logo options-items" href="home">MyAPP</a>
+
+        <form class="navbar-input-container" method="get" action="/search">
+          <div class="search-wrapper">
+                <input name="search" class="navbar-input" type="text" placeholder="Search for friend, post or video"
+                autocomplete="off"  onFocus="show()" onBlur="hide()" onload="clear()" onkeyup="filterSearch()">
+                <button class="searchButton"><span class="material-symbols-outlined">search</span></button>
+                <div id="searchAlert">
+                    <p style="text-align: center; margin-top: 10px; color: red;">"The user you are looking for doesnt exist!"</p>
+                </div>
+                <div class="searchResults">
+                    <ul>
+                        <% users.forEach((user)=> { %>
+
+                            <div class="result" onclick="sendToInput(this)">
+                                <% if(user.profilePic !== ""){ %>
+                                    <img src="<%=user.profilePic %>" alt="pic">
+                                <% } else{ %>
+                                    <img src="/images/def-profile.webp">
+                                <% } %>
+            
+                                <a><%= user.username %></a>
+                            </div>
+                        <%})%>
+
+                    </ul>
+                </div>
+                
+            </div>
+        </form>
+
+       <div options-cont>
+            <ul class="options">
+                <a class="options-items" href="/myprofile">My profile</a>
+                <a class="options-items" href="/auth/logout">Log out</a>
+            </ul>   
+            <span class="material-symbols-outlined" id="menu" onclick="dropdown()">menu</span>
+            <div class="hamburger-menu">
+                <div>
+                    <a href="/myprofile">My profile</a> 
+                </div>
+                <div>
+                    <a href="/auth/logout">Log out</a>
+                </div>
+            </div>
+       </div>
+    </div>
+</nav>
+<script>    
+    var resultList = document.querySelector('.searchResults')
+
+    const show = () => {
+        resultList.style.display = 'flex'
+    }
+    
+    const hide = () =>{
+        resultList.style.display = 'none'
+    }
+
+    const clear = () => {
+        input.value === ""
+    }
+
+    const sendToInput = (_this) => {
+        alert(1)
+        var input = document.querySelector('.navbar-input')
+
+        content = resultList.getElementsByTagName("a")[0].textContent
+        console.log(content)
+        input.value = content
+    }
+
+    // Show dropdown when button is clicked
+    const dropdown = () => {
+        const menu = document.querySelector(".hamburger-menu")
+
+        menu.style.display = " flex"
+    }
+    
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+    if (!event.target.matches('#menu')) {
+        const dropdown = document.querySelector(".hamburger-menu")
+
+        dropdown.style.display = "none"
+    }
+    }
+
+
+
+    const alert = document.querySelector('#searchAlert')
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    if(urlParams.get('error')) {
+
+        alert.style.display = 'block'
+        setTimeout(function(){
+            alert.style.display = "none"
+        }, 3000)
+        
+    }
+
+
+</script>   

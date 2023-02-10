@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/styles/profile.css">
+    <style>
+        .first-box{
+            justify-content: space-between;
+        }
+    </style>
+    <title><%= currentUser.username %></title>
+</head>
+<body>
+    <%- include('partials/navbar.ejs')%>
+    <div class="container">
+        <div class="profile">
+            <div class="first-box">
+                <div class="me">
+                    <form method="post" action="/myprofile/changepic" enctype="multipart/form-data">
+                        <div class="img-container">
+                            <% if(currentUser.profilePic !== ""){ %>
+                                <img src="<%= currentUser.profilePic %>">
+                            <% } else{ %>
+                                <img src="/images/def-profile.webp">
+                            <% } %>
+                                
+                            <div class="changeImg">
+                                <label for="file-input"><span class="material-symbols-outlined">add</span></label>
+                                <input name="image" id="file-input" type="file" accept="image/*" onchange="imgPreview(event)"/>
+                            </div>
+                        </div>
+                        <div class="image-preview hidden">
+                            <a class="hidden" id="close" onclick="cancelImgUpl()"><span class="material-symbols-outlined">close</span></a>
+                            <button class="hidden" id="submit"><span class="material-symbols-outlined">done</span></button>
+                            <img class="hidden" id="file-image" src="" alt="Preview" >
+                        </div>
+                    </form>
+                    <a id="username"><%= currentUser.username %></a>
+                </div>
+                <div class="friends">
+                    <div class="followings-class">
+                        <a>Followings</a>
+                        <a class="Followings"><%= currentUser.following.length %></a>
+                    </div>
+
+                    <div class="followers-class">
+                        <a>Followers</a>
+                        <a class="followers"><%=currentUser.followers.length%></a>
+                    </div>
+                </div>
+            </div>
+            <div class="posts-box">
+                <% if(usersPosts.length !== 0){ %>
+                    <% usersPosts.forEach((post) =>{  %>
+                        <%- include('partials/posts.ejs', {post: post, user: currentUser})%>
+                    <% }) %>
+                <% } else{ %>
+                    <a class="noResults">There are no posts to view</a>
+                <% } %>
+
+            </div>
+            
+        </div>
+    </div>
+
+</body>
+</html>
+<script>
+    var imgContainer = document.querySelector(".img-container")
+    var imagePreview = document.querySelector(".image-preview")
+    var preview = document.querySelector("#file-image")
+    var close = document.querySelector("#close")
+    var submit = document.querySelector("#submit")
+
+    function imgPreview(event){
+        if(event.target.files.length > 0){
+            var src = URL.createObjectURL(event.target.files[0])
+
+            preview.src = src
+            imgContainer.classList.add('hidden')
+            imagePreview.classList.remove('hidden')
+            preview.classList.remove('hidden')
+            close.classList.remove('hidden')
+            submit.classList.remove('hidden')
+
+        }
+    }
+
+    function cancelImgUpl(){
+        preview.src = ""
+
+        imgContainer.classList.remove('hidden')
+        imagePreview.classList.add('hidden')
+        preview.classList.add('hidden')
+        close.classList.add('hidden')
+        submit.classList.add('hidden')
+
+    }
+</script>

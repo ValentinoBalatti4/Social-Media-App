@@ -1,0 +1,196 @@
+/* Posts styling */
+
+.post-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    width: 100%;
+    max-width: 650px;
+    background-color: whitesmoke;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(141, 141, 141, 0.77);
+
+}
+
+.post-container .post-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: solid 1px gray;
+}   
+
+.post-container .post-header .post-options button{
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    border-radius: 100%;
+    transition: 0.1s ease-in;
+}
+
+.post-container .post-header .post-options button:hover{
+    cursor: pointer;
+    color: rgb(192, 0, 0);
+    background-color: rgba(141, 141, 141, 0.1);
+
+}
+
+
+
+.post-container .post-header .user-info{
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.post-container .post-header .user-info a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.post-container .post-header .user-info img{
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    margin-right: 10px;
+}
+
+.post-container img{
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 625px;
+    height: 500px;
+    margin-top: 10px;   
+}
+
+.interactions{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0;
+    gap: 15px;
+}
+
+.interactions button{
+    background: none;
+    border: none;
+}
+
+.interactions #liked{
+  font-variation-settings:
+  'FILL' 1
+}
+
+.interactions span{
+    font-size: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.interactions div{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.comment-section{
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 5px;
+
+    border-radius: 10px;
+}
+
+#commentInput{
+    font-size: 15px;
+    height: 40px;
+    width: 100%;
+    padding: 0 10px;
+    border-radius: 15px;
+    border: none; 
+    outline-color: orange;
+}
+
+.comment{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 10px;
+    gap: 5px;
+    background-color: rgba(141, 141, 141, 0.1);
+    border-radius: 15px;
+}
+
+.commentContent{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding:5px;
+}
+
+.comment img{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+}
+
+.commentContent a {
+    text-decoration: none;
+    color: black;
+}
+
+.commentContent a:hover{
+    text-decoration: underline;
+}
+
+.comment-options #delete{
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    transition: 0.1s ease-in;
+    border-radius: 100%;
+}
+
+.comment-options #delete:hover{
+    cursor: pointer;
+    color: rgb(192, 0, 0);
+    background-color: whitesmoke;
+
+}
+
+@media only screen and (max-width: 900px) {
+    .post-container{
+        max-width: 550px;
+    }
+
+    .post-container img{
+        max-width: 525px;
+    }
+}
+
+@media only screen and (max-width: 625px) {
+    .post-container{
+        max-width: 300px;
+    }
+
+    .post-container img{
+        width: 275px;
+        height: 175px;
+    }
+
+    .comment img{
+        width: 20px;
+        height: 20px;
+    }
+
+}
+
