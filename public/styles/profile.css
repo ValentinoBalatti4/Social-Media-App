@@ -142,3 +142,53 @@
     color: gray;
 }
 
+@media only screen and (max-width: 900px){
+    .posts-box{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .first-box{
+        height: 100px;
+        padding: 5px;
+    }
+
+    .first-box #username{
+        font-size: 20px;
+    }
+
+    .friends{
+        font-size: 16px;
+        gap: 10px;
+        margin-left:-60px;
+        align-items: flex-start;
+    }
+
+    .first-box .me img{
+        height: 90px;
+        width: 90px;
+        border-radius: 100%;
+    }
+    
+}
+
+@media only screen and (max-width: 400px){
+    .first-box .me img{
+        height: 60px;
+        width: 60px;
+        border-radius: 100%;
+    }
+
+    .changeImg label{
+        width: 15px;
+        height: 15px;   
+        right: 5px;
+        bottom: 10px;
+
+    }
+
+
+
+    .friends{
+        margin-left: -65px;
+    }
+}

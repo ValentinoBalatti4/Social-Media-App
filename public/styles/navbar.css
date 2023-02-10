@@ -79,9 +79,13 @@ nav{
 }
 
 .navbar-input-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    margin: 0;
-    width: 60vh;
+    width:60%;
+    
+    
 }
 
 .navbar-input{
@@ -188,6 +192,9 @@ nav{
         font-size: 30px;
     }
 
+    .navbar-input-container{
+        margin-left: -250px;
+    }
     
     .hamburger-menu{
         position: absolute;
@@ -222,6 +229,13 @@ nav{
     }
 }
 
+@media only screen and (max-width: 1300px) {
+    .navbar-input-container{
+        margin-left: -100px;
+    }
+
+}
+
 @media only screen and (max-width: 625px) {
     nav{
         padding: 8px 2rem;
@@ -239,3 +253,12 @@ nav{
     }
 
 }
+
+@media only screen and (max-width: 400px) {
+    .searchButton{
+        height: 15px;
+        width: 15px;
+    }
+
+}
+
