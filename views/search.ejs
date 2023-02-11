@@ -7,13 +7,11 @@
     <link type="text/css" rel="stylesheet" href="/styles/profile.css">
 
     <style>
-        .first-box{
-            justify-content: space-evenly;
-        }
+
 
         .connect button{
             background-color: orange;
-            font-weight: 5  00;
+            font-weight: 500;
             font-size: 24px;
             border-radius: 15px;
             border: none;
@@ -21,13 +19,50 @@
             box-shadow: 0px 4px 4px 2px rgba(141, 141, 141, 0.77);
             transition: 0.1s ease-in-out;
             cursor: pointer;
-
         }
 
         .connect button:active{
             box-shadow: 0px 1px 1px 1px rgba(141, 141, 141, 0.77);
 
         }
+
+        @media only screen and (max-width: 900px){  
+
+            .friends{
+                margin-left:-40px;
+            }
+        }
+        
+        @media only screen and (max-width: 1066px){  
+            .connect button{
+                padding: 0;
+                font-size: 18px;
+                width: 100px;
+                height: 40px;
+            }
+            
+        }
+
+        @media only screen and (max-width: 560px){
+            .connect button{
+                text-align: center;
+                font-size: 16px;
+                width: 80px;
+                height: 30px;
+                margin-left: -90px;
+            }
+        }  
+
+        @media only screen and (max-width: 310px){
+            .connect button{
+                margin-left: -60px;
+                font-size: 14px;
+                width: 60px;
+                height: 20px;
+            }
+        }
+
+
     </style>
 </head>
 <body>

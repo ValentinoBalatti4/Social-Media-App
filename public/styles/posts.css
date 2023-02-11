@@ -169,15 +169,15 @@
 
 @media only screen and (max-width: 900px) {
     .post-container{
-        max-width: 550px;
+        max-width: 500px;
     }
 
     .post-container img{
-        max-width: 525px;
+        max-width: 475px;
     }
 }
 
-@media only screen and (max-width: 625px) {
+@media only screen and (max-width: 650px) {
     .post-container{
         max-width: 300px;
     }
@@ -194,3 +194,24 @@
 
 }
 
+@media only screen and (max-width: 350px) {
+    .post-container{
+        max-width: 150px;
+    }
+    .post-container .post-header .user-info{    
+        font-size: 16px;
+    }
+    .post-container img{
+        width: 130px;
+        height: 100px;
+    }
+
+    .comment{
+        font-size: 12px;
+    }
+
+    .comment img{
+        width: 15px;
+        height: 15px;
+    }
+}

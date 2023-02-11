@@ -247,3 +247,14 @@ aside .contactList{
     }
 
 }
+
+@media only screen and (max-width: 350px) {
+    .uploadContainer{
+        max-width: 200px;
+    }
+
+    .postsContainer{
+        width: 200px;
+    }
+
+}

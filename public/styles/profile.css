@@ -125,14 +125,11 @@
     margin-left: auto;
 }
 
-
-
 .posts-box{
     margin: 0 20px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-
+    grid-template-columns: repeat(1, 1fr);
+    place-self: center;
 }
 
 .noResults{
@@ -142,10 +139,7 @@
     color: gray;
 }
 
-@media only screen and (max-width: 900px){
-    .posts-box{
-        grid-template-columns: repeat(1, 1fr);
-    }
+@media only screen and (max-width: 900px){  
 
     .first-box{
         height: 100px;
@@ -155,6 +149,13 @@
     .first-box #username{
         font-size: 20px;
     }
+
+    .changeImg label{
+        right: 8px; 
+        bottom: 8px;
+    }
+
+
 
     .friends{
         font-size: 16px;
@@ -186,9 +187,27 @@
 
     }
 
-
-
+    .changeImg label span{
+        font-size: 16px;
+        padding: 0;
+    }
+    
     .friends{
         margin-left: -65px;
+    }
+}
+
+
+@media only screen and (max-width: 400px){
+
+    .friends{
+        font-size: 11px;
+    }
+
+}
+
+@media only screen and (max-width: 350px){
+    .friends{
+        font-size: 10px;
     }
 }

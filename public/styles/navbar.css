@@ -104,8 +104,6 @@ nav{
     position: absolute;
     right: 15px;
     top: 7px;
-    height: 30px;
-    width: 30px;
     border-radius: 100%;
     outline: none;
     border: none;
@@ -247,17 +245,32 @@ nav{
     }
 
     .searchButton{
-        top: 0;
+        top: 5px;
+        right: 5px;
         height: 20px;
         width: 20px;
+    }
+    .searchButton span{
+        font-size: 20px !important;
     }
 
 }
 
 @media only screen and (max-width: 400px) {
+
+
+    .navbar-input{
+        margin-left: 20px;
+    }
+
     .searchButton{
-        height: 15px;
-        width: 15px;
+        top: 7px;
+        right: -15px;
+        height: 18px;
+        width: 18px;
+    }
+    .searchButton span{ 
+        font-size: 12px !important; 
     }
 
 }
