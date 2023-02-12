@@ -205,7 +205,7 @@ aside .contactList{
     display: flex;
     margin: auto;
     flex-direction: column;
-    width: 700px;
+    width: 100%;
 }
 
 .postsContainer .noResults{

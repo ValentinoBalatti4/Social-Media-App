@@ -194,20 +194,39 @@
     
     .friends{
         margin-left: -65px;
-    }
-}
-
-
-@media only screen and (max-width: 400px){
-
-    .friends{
         font-size: 11px;
-    }
 
+    }
 }
+
+
 
 @media only screen and (max-width: 350px){
     .friends{
         font-size: 10px;
     }
+
+    .first-box form .image-preview{
+        margin: 0;
+        padding: 0;
+    }
+
+    .first-box form .image-preview a{
+        width: 15px;
+        height: 15px;
+        right: 0;
+        top: 0;
+    }
+
+    .first-box form .image-preview button{
+        width: 15px;
+        height: 15px;
+        right: 0;
+        bottom: 10px;
+    }
+
+    .first-box form .image-preview .material-symbols-outlined{
+        font-size: 12px;
+    }
+
 }

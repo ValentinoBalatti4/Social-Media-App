@@ -210,6 +210,13 @@
         font-size: 12px;
     }
 
+    #delete{
+        position: relative;
+        right: 22px;
+        top: -10px;
+        font-size: 22px;
+    }
+
     .comment img{
         width: 15px;
         height: 15px;
