@@ -41,7 +41,7 @@
             <div class="postsContainer">
                 <% if(allPosts.length !== 0){ %>
                     <% allPosts.forEach((post) =>{  %>
-                        <%- include('partials/posts.ejs', {post: post}) %>
+                        <%- include('partials/posts.ejs', {post: post, user: users}) %>
                     <% }) %>
                 <% } else{ %>
                     <a class="noResults">There are no posts to view</a>
@@ -53,14 +53,20 @@
             <a>My followings</a>
             <hr>
             <ul class="contactList">
-                <% currentUser.following.forEach((user)=>{ %>
+                <% currentUser.following.forEach((followingU)=>{ %>
                     <div class="contact">
-                        <% if(user.profilePic !== ""){ %>
-                            <img src="<%= user.profilePic %>">
-                        <% } else{ %>
-                            <img src="/images/def-profile.webp">
-                        <% } %>
-                        <a href="/search?search=<%=user.username%>"><%- user.username %></a>
+
+                        <% users.forEach((user) => { %>
+                            <% if(followingU === user.username){ %>
+                                <% if(user.profilePic !== ""){ %>
+                                    <img src="<%= user.profilePic %>">
+                                <% } else{ %>
+                                    <img src="/images/def-profile.webp">
+                                <% } %>
+                            <% } %>
+                        <% }) %>
+                    
+                        <a href="/search?search=<%=followingU%>"><%- followingU %></a>
                     </div>
                 <% }) %>
             </ul>
@@ -70,21 +76,13 @@
 </body>
 </html>
 <script>
-    var preview = document.querySelector("#file-image")
     var close = document.querySelector("#close")
 
-    function validateUpl(){
-        var textInput = document.querySelector("#inputText")
-        var shareBtn = document.querySelector("#share")
-        var shareSpan = shareBtn.getElementsByTagName("span")[0]
 
-        if(textInput.value === "" && preview.src === ""){
-            shareBtn.disabled = true
-            shareSpan.disabled = true
-        }
-    }
     
     function imgPreview(event){
+        var preview = document.getElementById("file-image")
+
         if(event.target.files.length > 0){
             var src = URL.createObjectURL(event.target.files[0])
 
@@ -93,6 +91,23 @@
             close.classList.remove('hidden')
         }
     }
+
+    function validateUpl(){
+        var textInput = document.querySelector("#inputText")
+        var shareBtn = document.querySelector("#share")
+        var shareSpan = shareBtn.getElementsByTagName("span")[0]
+        var preview = document.getElementById("file-image")
+
+
+        if(textInput.value === "" && preview.getAttribute("src") === ""){
+            shareBtn.disabled = true
+            shareSpan.disabled = true
+        } else{
+            shareSpan.disabled = false
+            shareBtn.disabled = false
+        }
+    }
+
 
     function cancelImgUpl(){
         preview.src = ""

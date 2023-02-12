@@ -79,14 +79,14 @@ router.post("/home/:id/follow", async (req, res) => {
         try{
             const user = await User.findById(req.params.id)
             const currentUser = await User.findById(req.user._id)
-            if(!user.followers.some(follower => follower.username === req.user.username)){
-                await user.updateOne({ $push: {followers: {username: req.user.username, profilePic: req.user.profilePic}} })
-                await currentUser.updateOne({ $push: {following: {username: user.username, profilePic: user.profilePic}} })
+            if(!user.followers.some(follower => follower === req.user.username)){
+                await user.updateOne({ $push: {followers:  req.user.username} })
+                await currentUser.updateOne({ $push: {following: user.username} })
                 res.status(200)
             
             } else{
-                await user.updateOne({ $pull: {followers: {username: req.user.username, profilePic: req.user.profilePic}} })
-                await currentUser.updateOne({ $pull: { following: {username: user.username, profilePic: user.profilePic}} })
+                await user.updateOne({ $pull: {followers: req.user.username} })
+                await currentUser.updateOne({ $pull: { following: user.username} })
                 res.status(200)
             }
 

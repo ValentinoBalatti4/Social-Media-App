@@ -7,7 +7,6 @@ const Post = new mongo.Schema({
         required: true,
         unique: false
     },
-    userPicPath: String,
     text: {
         type:String,
         max: 500

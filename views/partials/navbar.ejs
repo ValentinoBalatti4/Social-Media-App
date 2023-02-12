@@ -62,15 +62,6 @@
         resultList.style.display = 'flex'
     }
 
-    // Close the result search list when windows is clicked
-    window.onclick = function(event) {
-        const resultList = document.querySelector('.searchResults')
-        if (!event.target.matches('#input')) {
-        resultList.style.display = 'none'
-        }
-    }
-
-
     const clear = () => {
         input.value === ""
     }
@@ -81,11 +72,16 @@
         menu.style.display = " flex"
     }
     
-    // Close the dropdown if the user clicks outside of it
+    // Close any dropdowns if the user clicks outside of it
     window.onclick = function(event) {
+        const resultList = document.querySelector('.searchResults')
+
         if (!event.target.matches('#menu')) {
             const dropdown = document.querySelector(".hamburger-menu")
             dropdown.style.display = "none"
+        }
+        if (!event.target.matches('#input')) {
+            resultList.style.display = 'none'
         }
     }
 
@@ -109,20 +105,10 @@
     })
 
     // send selected result to the input field
-
     function selectResult(result) {
         inputField.value = result
         form.submit()
     }
-
-    // resultsDivs.forEach(function(div) {
-    //     div.addEventListener('click', function() {
-    //         const username = div.querySelector('a').textContent
-    //         inputField.value = username
-    //         form.submit()
-    //     })
-    // })
-
 
     // Alert user searched doesnt exist
     const alert = document.querySelector('#searchAlert')

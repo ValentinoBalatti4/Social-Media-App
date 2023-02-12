@@ -6,11 +6,19 @@
 <div class="post-container">
     <div class="post-header">
         <div class="user-info">
-            <% if(post.userPicPath !== ""){ %>
-                <img src="<%= post.userPicPath %>">
-            <% } else{ %>
-                <img src="/images/def-profile.webp">
-            <% } %>
+
+            <% users.forEach((user) => { %>
+                <% if(post.username === user.username){ %>
+                    <% var profilePic = user.profilePic %>
+                    <% if(profilePic !== "") { %>
+                        <img src="<%= profilePic %>"> %>
+                    <% } else { %>
+                        <img src="/images/def-profile.webp">
+                    <% } %>
+                <% } %>
+            <%  }) %>
+
+
 
             <a href="/search?search=<%=post.username%>"><%= post.username %></a>
         </div>

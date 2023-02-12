@@ -91,7 +91,7 @@
                 </div>
                 <% if(user.username !== currentUser.username){ %>
                     <form class="connect" method="post" action="/home/<%- user._id %>/follow">
-                        <% if(user.followers.some(follower => follower.username === currentUser.username)) {%>
+                        <% if(user.followers.some(follower => follower === currentUser.username)) {%>
                             <button>Followed</button>
                         <% } else{ %>
                             <button>Follow</button>
