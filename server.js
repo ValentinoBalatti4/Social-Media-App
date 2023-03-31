@@ -60,5 +60,5 @@ app.use("/", postRouter)
 app.use("/", usersRouter)
 app.use("/", viewsRouter)
 app.listen(4444, () => {
-    console.log(`Port connected on: http://127.0.0.1:4444`)
+    console.log(`Port connected on: ${process.env.BASE_URL}`)
 })
