@@ -9,7 +9,8 @@ router.get('/', (req, res) => {
     if(req.isAuthenticated()){
         res.redirect('/home')
     }else{
-        res.render('login')
+        // res.render('login')
+        res.send("login")
     }
 })
 
